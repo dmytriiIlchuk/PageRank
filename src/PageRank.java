@@ -2,12 +2,8 @@ public class PageRank {
     private double[][] references;
     private double[][] gMatrix;
     private int[] rowElements;
-    private double dampingFactor;
+    private double dampingFactor = 0.85;
     private double eps = 0.00001;
-
-    public PageRank(int size) {
-        init(size, 0.85);
-    }
 
     public PageRank(int[][] edges, int size, double dampingFactor) {
         init(size, dampingFactor);
@@ -22,11 +18,6 @@ public class PageRank {
         gMatrix = new double[size][size];
         rowElements = new int[size];
         this.dampingFactor = dampingFactor;
-    }
-
-    public void addEdge(int source, int destination) {
-        references[source][destination] = 1;
-        rowElements[source]++;
     }
 
     private void calcWeight() {

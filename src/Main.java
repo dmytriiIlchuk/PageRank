@@ -10,11 +10,12 @@ public class Main {
         int size = scanner.nextInt();
         int n = scanner.nextInt();
         int[][] edges = new int[n][2];
+        double dampingFactor = 0.85;
         for (int i = 0; i < n; i++) {
             edges[i][0] = scanner.nextInt();
             edges[i][1] = scanner.nextInt();
         }
-        PageRank pagerank = new PageRank(edges, size, 0.85);
+        PageRank pagerank = new PageRank(edges, size, dampingFactor);
         pagerank.buildGMatrix();
         double[][] eigenvector = pagerank.eigenvectorOfGMatrix();
         System.out.print("Eigenvector of G matrix: [");
